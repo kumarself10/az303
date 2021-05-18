@@ -1,0 +1,177 @@
+The smallest CIDR block we can have in Azure is /29 = 8 ip addresses
+The Largest CIDR block we can have in Azure in /8 = 16,777,216
+
+Setup Vnet:
+Name: VnetA
+Address Space: 10.1.0.0/16 =65,536 ip addresses
+New resource group = myrg
+Location: Westus
+Subnet : frontendsubnet
+Front end subnet Ip Address: 10.1.1.0/24 = 256 ip address
+Subnet: Backendsubnet
+Backend subnet IP address: 10.1.2.0/24 = 256 ip addresses
+
+Create a frontend network security group
+-----------------------------------------
+Name: frontendnsg
+ResourceGroup : myrg
+Location: westus
+create inbound rule==> select basic option==> allow port 22, 3389,80
+Outbound rules: no changes required
+Associate subnet: associate frontend nsg with frontend subnet
+
+
+Create a backend network security group
+-----------------------------------------
+Name: backendendnsg
+ResourceGroup : myrg
+Location: westus
+create inbound rule==> select Advanced option==> allow port 22, 3389,1433(database ports) from internal only
+Source : virtual network
+source port: *
+Destination: virtual network
+destination port: *
+Outbound rules: no changes required
+Associate subnet: associate backend nsg with backend subnet
+____________________________________________________________
+
+Install linux or Windows webserver
+# sudo su
+# apt-get install apache2
+# service apache2 start
+login to db server using the following command
+# ssh username@<backend server>
+___________________________________________________
+Vnet Peering: if vnets are in same region
+
+Setup Vnet B:
+Name: VnetB
+Address Space: 10.2.0.0/16 =65,536 ip addresses
+New resource group = myrg
+Location: Westus
+Subnet : VnetBsubnet
+Front end Ip Address: 10.2.1.0/24 = 256 ip address
+Create a VnetB network security group
+-----------------------------------------
+Name: VnetBnsg
+ResourceGroup : myrg
+Location: westus
+create inbound rule==> select basic option==> allow port 22, 3389,80
+Outbound rules: no changes required
+Associate subnet: associate VNetB nsg with VnetBsubnet
+
+
+Virtual Network to Virtual network connectivity: if vnets are in different regions
+_________________________________________________
+
+1. Vnets in the same region we use - Vnet peering
+2. Vnets in the different regions we use  -vnet to vnet connecitivity
+
+Vnet to Vnet connectivity in same region using vnet peering:
+___________________________________________________________
+1. Create a VnetC in west US -10.3.0.0/16
+2. Create a subnet - VnetCSubnet - 10.3.1.0/24
+4. Create a VnetD in west US -10.4.0.0/16
+5. Create a subnet - VnetDSubnet - 10.4.1.0/24
+7. Create a VM in VnetC
+8. Create a VM in VnetD
+9. Create VPN peering Connection from vnet C to vnet D
+10.Create VPN peering Connection from vnet D to vnet C
+11. Test connection between vnets using using private ips
+
+Vnet to Vnet connectivity if vnets are in different regions:
+________________________________________________________________
+1. First Vnet - VnetA - West US - 10.1.0.0/16 - VnetA subnet -10.1.1.0/24
+2. Create Gateway subnet in VnetA - 10.1.0.0/24, this is needed for assigning ip address to VPN gateway 
+3. Create VPN Gateway in VnetA - This process would take upto 40 mins
+4. Create a Vnet - VnetB in EAST US - 10.2.0.0/16 - VnetB Subnet -10.2.1.0/24
+5. Create Gateway subnet in VnetB - 10.2.0.0/24
+6. Create VPN Gateway in VnetB - This process would take upto 40 mins
+7. Create a VM in VnetA
+8. Create a VM in VnetB
+9. Create VPN Connection from vnet A to vnet B
+10.Create VPN Connection from vnet B to vnet A
+________________________________________________________
+
+vnet peering - connecting two different vnets in same region
+vnet to vnet connection : connecting two different vnets in different regions
+________________________________________________________________
+
+There are three ways we can connect on-prem network to Azure Network
+1. Point to Site Conection - Uses Internet for connectivity
+2. Site to Site Connection - Uses Internet for connectivity
+3. Express Route - Uses a dedicated private link from on-prem to Azure, doesn't use internet
+___________________________________________________________________
+
+ 
+
+Point to Site Connection
+_________________________________________________
+
+1. Create VnetA ==> WestUS==> 10.1.0.0/16 
+2. Subnet VnetASubnet ==> 10.1.1.0/24
+3. Create VPN Gateway ==> attach to VnetA -- it takes atleast 20 mins 
+5. Generate root and client certificates using powershell
+
+			$cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+			-Subject "CN=P2SRootCert" -KeyExportPolicy Exportable `
+			-HashAlgorithm sha256 -KeyLength 2048 `
+			-CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
+
+
+
+			New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
+			-Subject "CN=P2SChildCert" -KeyExportPolicy Exportable `
+			-HashAlgorithm sha256 -KeyLength 2048 `
+			-CertStoreLocation "Cert:\CurrentUser\My" `
+			-Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
+
+6. After generating certifcates export root certificate from "manage user certificates" console
+7. Export "child certificate" private key
+8. Import private key to your local machine by double clicking the child cert file.
+9. Open VnetA gateway ===> point to site configuration ==> address range ==> 172.31.201.0/24
+use tunnel as IKEV2 and SSTP
+10. Add root certificate excluding begin and end certificate
+11. Download and install the VPN Client
+12. Connect to VPN client and start using azure resources with local IP address
+___________________________________________________________________________________
+Site to Site Connection
+___________________________________________
+Create VnetB ==> WestUS==> 10.2.0.0/16 
+Subnet VnetBSubnet ==> 10.2.1.0/24
+Create VPN Gateway ==> attach to VnetB
+Create Local gateway (on-premises router) with public IP 
+Goto local gateway and add site-site vpn connection
+Download the configration 
+Send this configuration file to onprem network administrator
+Ask on prem network administrator to Update the on prem router with this file
+After updating the onprem router , Now connection will be  established
+_________________________________________________________________
+
+Express Route Connectivity
+_________________________________________________________
+1. Create VnetB ==> WestUS==> 10.2.0.0/16 
+2. Subnet VnetBSubnet ==> 10.2.1.0/24
+4. Create VPN Gateway ==> attach to VnetB
+5. Request for express router circuit.
+6. Select provider
+7. Select Peering location
+8. Select required bandwidth and create connection
+9. It will take some time to create circuit
+10. Once circuit is created, goto 
+11. Open VPN gateway and connections==> add
+12. select connection type express route , select vpn gateway and express route circuit and create
+13. Download the configration 
+14. Send this configuration file to onprem network administrator
+15. Ask on prem network administrator to Update the on prem router with this file
+16. After updating the onprem router , Now connection will be  established
+
+
+_____________________________________________________________
+
+Azure DNS:
+
+Map a public domain to a website running on azure virtual machine
+
+1. Goto http://freenom.com and register a free public domain 
+2. 
