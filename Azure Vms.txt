@@ -1,0 +1,21 @@
+1. Windows Servers -2008, 2012, 2016, 2019 
+2. Windows Clients - 7,8,10
+3. Linux - Redhat, ubuntu, centos, freebsd, 
+
+select the following 
+1. Subscription: free trial
+2. Resource group: it is a collection of resources.
+3. Resource: Resource is a server, storage, network, database. Every thing in azure is called resource.
+Every resource must be part of a resource group.
+4. Server Image: Ubuntu image, windows image, redhat image.
+We need images to create/build a server.
+Images are provided by Microsoft Azure.
+Need no need to download or upload images to Azure.
+5. Size of VM: Configuration of VM, select b1s model which is 1 cpu and 1 gb memory
+6. Public Inbound Ports: To connect windows machine port 3389 has to be opened. 
+		  To connect to linux machine port 22 has to be opened.
+7.Region: Location of datacenter.
+8. VM name: Name of the virtual Machine
+9. Username and Password: root and administrator usernames can't be used, becaused they are reserved words.
+
+SSH Client: Download and intsall Mobaxterm from https://mobaxterm.mobatek.net/ 

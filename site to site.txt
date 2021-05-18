@@ -1,0 +1,14 @@
+
+Site to Site Connection
+___________________________________________
+
+
+Create VnetA ==> WestUS==> 10.1.0.0/16 
+Subnet VnetASubnet ==> 10.1.1.0/24
+Create Gateway Subnet
+Create VPN Gateway ==> attach to VnetA
+Setup Local gateway (on-premises router information)
+Goto local gateway and add site-site vpn connection
+Download the configration 
+Update the configuration to  on prem local gateway or router in your organization
+Now connection is established

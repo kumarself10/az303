@@ -1,0 +1,64 @@
+
+To store anything in Azure we need to have storage accounts.
+Even for virtual hard disks we need storage account.
+
+There are two ways Virtual Machines storage is managed 
+
+1. Managed Disks ==> default option  ==> azure manages the storage for us
+2. Unmanaged Disks ==> storage is created and managed by customer/user.
+ only page blobs are unmanaged or managed
+
+Each Storage account size supports 500 TB
+Two Storage accounts:
+
+1. General Purpose storage account  ( V1 and V2)
+
+	Two Performance methods available
+
+		1. Standard Performance Method in GP- HDDs(hard disk drives) ==> Standard harddisks
+
+			Four Storage Services Available
+				A. Blobs ==> Binary Large Object (files) 
+					1. Block Blob  ==> static files, videos, audio, images etc
+					2. Append Blob  ==> dynamic content ==> log files
+					3. Page Blobs  ==> stores VM disks ==> c drive, D drive, E drive
+				B. Queues   ==> messaging channel for hetrogenous applications
+				C. Tables  ==> No sql data
+				D. Files   ==> Standard NAS
+		
+			Three Replication Methods Available
+
+				A. LRS   ==> Three copies maintained in same facilty
+				B. GRS  ==> 6 copies, 3 in Primary and 3 in Secondary are online, Secondary is offline
+				C. RA-GRS  ==> 6 copies, 3 in Primary and 3 in Secondary are online, Secondary is read only
+
+		
+		2. Premium Performance Method in GP- (SSD- solid state disks)
+			
+			One Storage Service Available
+				A. Blob Storage --- Page Blobs for VM Disks
+
+			One Replication Method Available
+				A. LRS
+
+
+2. Blob Storage Account 
+		
+		Two Storage services
+			1.Block Blob   ==> static files, videos, audio, images etc
+			2.Append Blob  ==> dynamic content ==> log files
+
+		Only one performance method available
+			A. Standard
+
+		Access Tiers
+			A. Hot Access Tier ==> for frequently accessed data
+			B. Cool Access Tier ===> infrequently accessed data
+
+		Replication Methods
+		
+			A. LRS   ==> Three copies maintained in same facilty
+			B. GRS  ==> 6 copies maintained in 2 different data centers, seconday is offline - 3 copies in primary, 3 copies in secondary 
+			C. RA-GRS  ==> 6 copies in Primary and Secondary are online, Secondary is read only - 3 copies in primary, 3 copies in secondary Storage Services 
+			
+

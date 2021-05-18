@@ -1,0 +1,56 @@
+Install azure SDK if not installed
+
+git clone git://github.com/Azure/azure-sdk-for-python.git
+cd azure-sdk-for-python
+python setup.py install
+
+from azure.servicebus import ServiceBusService
+key_name = 'RootManageSharedAccessKey' 
+key_value = 'FDUL95UweHX9PEsLbdh3wS4sLx0PVGg+BydZh2rFrIo=' 
+service_namespace = 'pravsb'
+sbs = ServiceBusService(service_namespace,
+ shared_access_key_name=key_name,
+ shared_access_key_value=key_value)
+
+
+The create_queue method can be used to ensure a queue exists:
+sbs.create_queue('taskqueue')
+
+
+The send_queue_message method can then be called to insert the message into the queue:
+
+from azure.servicebus import Message
+msg = Message('Hello World!')
+sbs.send_queue_message('taskqueue', msg)
+
+
+It is then possible to call the receive_queue_message method to dequeue the message.
+msg = sbs.receive_queue_message('taskqueue', peek_lock=False)
+print(msg.body)
+---------------------------------------------------------------------------------------
+
+msg = bus_service.receive_queue_message('taskqueue', peek_lock=True)
+print(msg.body)
+
+msg.delete()
+-------------------------------------------------------------------------------------------
+
+The create_topic method can be used to create a server-side topic:
+sbs.create_topic('taskdiscussion')
+
+
+The send_topic_message method can be used to send a message to a topic:
+
+from azure.servicebus import Message
+msg = Message('Hello World!')
+sbs.send_topic_message('taskdiscussion', msg)
+
+
+A client can then create a subscription and start consuming messages by calling the create_subscription method followed by thereceive_subscription_message method. Please note that any messages sent before the subscription is created will not be received.
+from azure.servicebus import Message
+
+sbs.create_subscription('taskdiscussion', 'client1')
+msg = Message('Hello World!')
+sbs.send_topic_message('taskdiscussion', msg)
+msg = sbs.receive_subscription_message('taskdiscussion', 'client1')
+

@@ -1,0 +1,32 @@
+Resource Group: Resource group is collection of resources
+
+Resource: virtual machine, storage, database, webapp.
+
+Every resource must be part of a resource group.
+
+Resource can be part of one resource group only at a time.
+
+We can move resource from one resource group to another resource group.
+
+If we delete the resource group, all resources in that resource group will get deleted.
+
+You can have as many resources as you wish in a resource group.
+
+For billing purpose also we create resource group
+
+Example of resource group
+
+1. devrg- for all development environment
+2. qarg - for qa environment
+3. prodrg - for prod enviroment
+
+4. insurancerg - resource group for insurance project.
+
+Resource groups can be created in different locations
+
+create and manage virtual machine using azure portal.
+
+create and manager virtual machines using ARM templates (Azure Resource Manager)
+IaC(Infrastructure as Code)
+
+

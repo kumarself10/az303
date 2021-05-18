@@ -1,0 +1,34 @@
+
+Point to Site Connection
+_________________________________________________
+
+Create VnetA ==> WestUS==> 10.1.0.0/16 
+Subnet VnetASubnet ==> 10.1.1.0/24
+Create Gateway Subnet
+Create VPN Gateway ==> attach to VnetA
+Generate root and client certificates using powershell
+Root cert will be stored in azure and client certificate will be imported to 
+local machine.
+
+
+			$cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+			-Subject "CN=P2SRootCert" -KeyExportPolicy Exportable `
+			-HashAlgorithm sha256 -KeyLength 2048 `
+			-CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
+
+
+
+			New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
+			-Subject "CN=P2SChildCert" -KeyExportPolicy Exportable `
+			-HashAlgorithm sha256 -KeyLength 2048 `
+			-CertStoreLocation "Cert:\CurrentUser\My" `
+			-Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
+
+
+After generating certifcates export root certificates from "manage user certificates" window.
+Export "child certificate" private key
+Import private key to your local machine
+Open VnetA gateway ===> point to site configuration ==> address range ==> 172.31.201.0/24
+Add root certificate excluding begin and end certificate
+Download and install the VPN Client
+Connect to VPN client and start using azure resources with local IP address

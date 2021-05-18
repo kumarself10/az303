@@ -1,0 +1,18 @@
+Monitoring: is an act of collecting and analyzing data to determine the performance, health and availability of the applications and the resouces that depends on it.
+Increase the uptime of the application by knowing the issues proactively and resolve them before they occur.
+
+Azure monitor: Using azure monitor we can monitor
+1. Application
+2. Operating System
+3. Azure Resources
+4. Azure Subscriptions
+5. Custom sources
+
+Azure Advisor: It helps to analyze the resource configuration and usage, It then recommends the solutions to improve the cost effectiveness, performance , high availabilty and security of resources.
+
+
+Activity Log: is a subscription log that provides insight into subscription-vele events that occured in azure. 
+
+who, what and when 
+
+Activity logs are kept for 90 days, we can query the acitivty log data.

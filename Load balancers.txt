@@ -1,0 +1,20 @@
+Load Balancers:
+
+	With the help of load balancer, load is distributed across multiple virtual machines.
+Azure Has three kinds of load balancers
+
+	1. Azure Load Balancer - works in the same region, it is for distributing load across instances in the same region, it supports any kind of protocol.
+	Ports 0-65536, This works at transport layer in OSI -TCP and UDP.
+	It routes traffic based on source ip address and port, to a destination ip address and port.
+	2. Applicatioin Gateway: works in the same region, it is for distributing load web traffic across instances in the same region. Web ports are 80 (http) and 443 (https). It is more suitable for web applications.
+
+	We can route the traffic based on incoming url, if the incoming url is for images (http://myappelb.com/images), we can route the traffic to specific set of servers (pool) configured for images.
+	If the incoming url is for videos (http://myappelb.com/videos), we can route the traffic to another specific set of servers (pool) configured for videos.
+	App elb works at layer 7 which application layer.
+
+	3. Traffic manager : It works different regions, it can be used for any ports. it works at DNS, every endpoint in traffic manager requires a dns name.
+
+Unexpected outages: natural disasters, cyber attacks, human errors
+expected outages: patching, updates
+
+Only one update domain we bring down for maintenance activities.
