@@ -1,0 +1,45 @@
+	1. https://www.microsoftazurepass.com/  - azure paas subscription
+	Open this link in incognito or inprivate window
+	Sign up using personal email address only
+
+To check the azure pass balance - https://www.microsoftazuresponsorships.com/balance
+
+Az 303 labs -https://github.com/MicrosoftLearning/AZ-303-Microsoft-Azure-Architect-Technologies
+
+Skillpipe study material - https://www.skillpipe.com/ - register personal email id -
+Add DMOC license code to redeem the book
+
+
+Azure services & subscriptions limits - https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits
+
+
+Labs -
+
+Create a new tenant in Azure Active Directory
+https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+
+Lab 2- View your organization's groups and members in Azure Active Directory
+https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-groups-view-azure-portal
+
+
+Lab 3- Add or delete users using Azure Active Directory
+
+https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory
+
+Lab 4- Assign administrator and non-administrator roles to users with Azure Active Directory
+
+https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal
+Lab 5: Implementing custom Role Based Access Control (RBAC) roles
+Lab - https://github.com/MicrosoftLearning/AZ-300-MicrosoftAzureArchitectTechnologies/blob/master/Instructions/AZ-300T03_Lab_Mod04_Implementing%20custom%20Role%20Based%20Access%20Control%20roles.md
+
+---------------------------------------------------------------------------------------------------
+
+Day 2 Labs -
+
+1. Create Azure Vnets - https://docs.microsoft.com/en-us/azure/virtual-network/quick-create-portal 
+2. Vnet peering -  https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-connect-virtual-networks-portal
+3. Point to site - https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
+4. Azure load balancer - https://docs.microsoft.com/en-us/azure/load-balancer/quickstart-load-balancer-standard-public-portal?tabs=option-1-create-load-balancer-standard
+5. Create bastion host - https://docs.microsoft.com/en-us/azure/bastion/tutorial-create-host-portal
+
+
