@@ -43,3 +43,22 @@ Day 2 Labs -
 5. Create bastion host - https://docs.microsoft.com/en-us/azure/bastion/tutorial-create-host-portal
 
 
+Day 3 labs -
+
+Lab 1 - 
+Create an Azure Storage table in the Azure portal
+https://docs.microsoft.com/en-us/azure/storage/tables/table-storage-quickstart-portal
+Lab 2-
+Create an Azure SQL Database single database
+https://docs.microsoft.com/en-us/azure/azure-sql/database/single-database-create-quickstart?tabs=azure-portal
+Lab 3 -
+Create an Azure SQL Managed Instance
+https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/instance-create-quickstart
+Lab 4 -
+Create SQL Server 2017 on a Windows virtual machine in the Azure portal
+https://docs.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart
+Lab 5 -
+Create an Azure Cosmos account, database, container, and items from the Azure portal
+https://docs.microsoft.com/en-us/azure/cosmos-db/create-cosmosdb-resources-portal
+
+
