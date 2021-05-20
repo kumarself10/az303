@@ -61,4 +61,25 @@ Lab 5 -
 Create an Azure Cosmos account, database, container, and items from the Azure portal
 https://docs.microsoft.com/en-us/azure/cosmos-db/create-cosmosdb-resources-portal
 
+Day 4 Labs -
+
+Lab 1 -Quick start templates - all templates
+https://github.com/Azure/azure-quickstart-templates
+Lab 2- Create simple-linux using template
+https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux
+Lab 3- Create simple-windows using template
+https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows
+Lab 4- Create a vnet using template
+https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets
+Lab 5- Grant a user access to Azure resources using the Azure portal
+https://docs.microsoft.com/en-us/azure/role-based-access-control/quickstart-assign-role-user-portal
+Lab 6- Create an Azure custom role using Azure PowerShell
+https://docs.microsoft.com/en-us/azure/role-based-access-control/tutorial-custom-role-powershell
+Lab 7-Create a policy assignment to identify non-compliant resources
+https://docs.microsoft.com/en-us/azure/governance/policy/assign-policy-portal
+Lab 8- Set and retrieve a key from Azure Key Vault using the Azure portal
+https://docs.microsoft.com/en-us/azure/key-vault/keys/quick-create-portal
+Lab 9 Set and retrieve a key from Azure Key Vault using Azure PowerShell
+https://docs.microsoft.com/en-us/azure/key-vault/keys/quick-create-powershell
+
 
