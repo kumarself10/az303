@@ -63,7 +63,7 @@ https://docs.microsoft.com/en-us/azure/cosmos-db/create-cosmosdb-resources-porta
 
 Day 4 Labs -
 
-Lab 1 -Quick start templates - all templates
+Lab 1 -Quick start templates - all templates - just review the templates
 https://github.com/Azure/azure-quickstart-templates
 Lab 2- Create simple-linux using template
 https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux
