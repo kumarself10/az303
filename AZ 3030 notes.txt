@@ -82,4 +82,15 @@ https://docs.microsoft.com/en-us/azure/key-vault/keys/quick-create-portal
 Lab 9 Set and retrieve a key from Azure Key Vault using Azure PowerShell
 https://docs.microsoft.com/en-us/azure/key-vault/keys/quick-create-powershell
 
+Day 5 Labs-
+
+Lab1 - Deploy a container instance in Azure using the Azure portal
+https://docs.microsoft.com/en-us/azure/container-instances/container-instances-quickstart-portal
+Lab 2 -Deploy an Azure Kubernetes Service (AKS) cluster using the Azure portal
+https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal
+Lab 3 - Create a Log Analytics workspace in the Azure portal
+https://docs.microsoft.com/en-us/azure/azure-monitor/logs/quick-create-workspace
+Lab 4 -Monitor a Windows virtual machine in Azure
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-monitor#:~:text=To%20enable%20monitoring%20of%20your%20Azure%20VM%20with,On%20the%20Insights%20%28preview%29%20page%2C%20select%20Try%20now.
+
 
